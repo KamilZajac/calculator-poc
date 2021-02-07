@@ -1,0 +1,14 @@
+<div class="calculator" *ngIf="calculator">
+  <h2>{{calculator.name}}</h2>
+
+  <div class="inputs" *ngFor="let param of calculator.args | keyvalue;">
+    <label>{{param.value.key}}</label>
+    <input [(ngModel)]="param.value.value" type="number" #inputs
+           [disabled]="selectedArg.key === param.value.key"
+           (keyup)="calculate(calculator)">
+    <div class="select" *ngIf="param.value['method']"
+         (click)="selectArg(param.value)">Calculate this
+    </div>
+  </div>
+
+</div>
